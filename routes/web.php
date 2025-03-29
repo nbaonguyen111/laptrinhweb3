@@ -14,6 +14,7 @@ use App\Http\Controllers\CrudUserController;
 |
 */
 Route::get('dashboard', [CrudUserController::class, 'dashboard']);
+// Route::get('main', [CrudUserController::class, 'main']);
 
 Route::get('login', [CrudUserController::class, 'login'])->name('login');
 Route::post('login', [CrudUserController::class, 'authUser'])->name('user.authUser');

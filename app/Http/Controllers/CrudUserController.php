@@ -36,7 +36,7 @@ class CrudUserController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('list')
-                ->withSuccess('Signed in');
+                ->withSuccess('Singed in');
         }
 
         return redirect("login")->withSuccess('Login details are not valid');
