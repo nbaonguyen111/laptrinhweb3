@@ -19,7 +19,7 @@ class CrudUserController extends Controller
      */
     public function login()
     {
-        return view('crud_user.login');
+        return view('login');
     }
 
     /**
@@ -47,7 +47,7 @@ class CrudUserController extends Controller
      */
     public function createUser()
     {
-        return view('crud_user.create');
+        return view('register');
     }
 
     /**
@@ -57,8 +57,6 @@ class CrudUserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -66,8 +64,6 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
@@ -78,12 +74,28 @@ class CrudUserController extends Controller
     /**
      * View user detail page
      */
-    public function readUser(Request $request) {
-        $user_id = $request->get('id');
+    // public function viewUser(Request $request) {
+    //     $user_id = $request->query('id'); // Lấy ID từ query string (?id=2)
+    
+    //     if (!$user_id) {
+    //         return redirect()->route('user.list')->with('error', 'Vui lòng cung cấp ID người dùng!');
+    //     }
+    
+    //     $user = User::find($user_id);
+    
+    //     if (!$user) {
+    //         return redirect()->route('user.list')->with('error', 'Người dùng không tồn tại!');
+    //     }
+    
+    //     return view('view', ['user' => $user]); // Trả dữ liệu về view.blade.php
+    // }
+    public function viewUser(Request $request) {
+        $user_id = $request->get('id'); // Nhận ID từ query string
         $user = User::find($user_id);
-
-        return view('crud_user.read', ['messi' => $user]);
+    
+        return view('view', ['user' => $user]);
     }
+    
 
     /**
      * Delete user by id
@@ -103,7 +115,7 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.update', ['user' => $user]);
+        return view('update', ['user' => $user]);
     }
 
     /**
@@ -115,16 +127,12 @@ class CrudUserController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
         ]);
 
        $user = User::find($input['id']);
        $user->name = $input['name'];
-       $user->phone = $input['phone'];
-       $user->address = $input['address'];
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->save();
@@ -139,7 +147,7 @@ class CrudUserController extends Controller
     {
         if(Auth::check()){
             $users = User::all();
-            return view('crud_user.list', ['users' => $users]);
+            return view('list', ['users' => $users]);
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');

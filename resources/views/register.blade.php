@@ -16,22 +16,6 @@
                     @endif
                 </div>
 
-                <!-- Phone Input -->
-                <div class="form-group mb-4">
-                    <input type="text" placeholder="Phone" id="phone" class="form-control form-control-lg rounded-pill" name="phone" required>
-                    @if ($errors->has('phone'))
-                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                    @endif
-                </div>
-
-                <!-- Address Input -->
-                <div class="form-group mb-4">
-                    <input type="text" placeholder="Address" id="address" class="form-control form-control-lg rounded-pill" name="address" required>
-                    @if ($errors->has('address'))
-                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                    @endif
-                </div>
-
                 <!-- Email Input -->
                 <div class="form-group mb-4">
                     <input type="text" placeholder="Email" id="email_address" class="form-control form-control-lg rounded-pill" name="email" required>
