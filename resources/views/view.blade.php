@@ -7,8 +7,11 @@
         <input type="text" class="form-control" disabled value="{{$user->name}}">
         <label for="" class="form-label">Email</label>
         <input type="email" class="form-control" disabled value="{{$user->email}}">
+        <label for="" class="form-label"><img src="{{ asset('images/'.$user->images) }}" alt="" srcset=""></label>
+        <input type="" class="form-control" disabled>
         <div class="clearfix">
         <a href="{{ route('user.updateUser', ['id' => $user->id]) }}" class="btn btn-primary mt-3 mb-3 float-end">Chỉnh sửa </a>
     </div>
+    <!-- <a href="{{ route('user.updateUser',['id' => $user-> id]) }}">Edit</a> -->
     </div>
 @endsection
