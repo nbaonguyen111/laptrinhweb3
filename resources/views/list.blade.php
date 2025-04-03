@@ -11,6 +11,7 @@
                 <th>Like</th>
                 <th>Facebook</th>
                 <th>Email</th>
+                <th>Images</th>
                 <th>Thao Tác</th>
             </tr>
         </thead>
@@ -21,7 +22,10 @@
                 <th>{{ $user->name }}</th>
                 <th>{{ $user->like }}</th>
                 <th>{{ $user->facebook }}</th>
-                <th>{{ $user->email }}</th>
+                <th>{{ $user->email}}</th>
+                <th><img src="{{ asset('images/'.$user->images) }}" style="height: 50px;width:50px;"></th>
+                
+                
                 <th>
                     <a href="{{ route('user.viewUser', ['id' => $user->id]) }}" class="btn btn-primary">View</a> |
                     <a href="{{ route('user.updateUser', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a> |

@@ -43,6 +43,13 @@
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                 </div>
+                <div class="form-group mb-4">
+                    <input type="file" placeholder="Upload Images" id="images" class="form-control form-control-lg rounded-pill" name="images" required>
+                    @if ($errors->has('images'))
+                        <span class="text-danger">{{ $errors->first('images') }}</span>
+                    @endif
+                </div>
+
                
                 
                 <button class="mb-3 btn btn-primary mt-3" type="submit">Lưu</button>

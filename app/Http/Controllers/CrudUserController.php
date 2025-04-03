@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 
 /**
  * CRUD User controller
@@ -61,19 +62,26 @@ class CrudUserController extends Controller
             'facebook' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
         ]);
-
+        
+        
+      
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
             'like' => $data['like'],
             'facebook' => $data['facebook'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'images' => $data['images'],
         ]);
 
         return redirect("login");
+        
     }
+    
 
    
     public function viewUser(Request $request) {
@@ -118,6 +126,7 @@ class CrudUserController extends Controller
             'facebook' => 'required',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
        $user = User::find($input['id']);
@@ -126,6 +135,8 @@ class CrudUserController extends Controller
        $user->facebook = $input['facebook'];
        $user->email = $input['email'];
        $user->password = $input['password'];
+       $user->images = $input['images'];
+      
        $user->save();
 
         return redirect("list")->withSuccess('You have signed-in');
