@@ -13,18 +13,18 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
-                            <tr>
-                                <th>{{ $user->id }}</th>
-                                <th>{{ $user->name }}</th>
-                                <th>{{ $user->email }}</th>
-                                <th>
-                                    <a href="{{ route('user.viewUser', ['id' => $user->id]) }}" class="btn btn-primary">View</a> |
-                                    <a href="{{ route('user.updateUser', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a> |
-                                    <a href="{{ route('user.deleteUser', ['id' => $user->id]) }}" class="btn btn-danger">Delete</a>
-                                </th>
-                            </tr>
-                        @endforeach
+            @foreach($users as $user)
+            <tr>
+                <th>{{ $user->id }}</th>
+                <th>{{ $user->name }}</th>
+                <th>{{ $user->email }}</th>
+                <th>
+                    <a href="{{ route('user.viewUser', ['id' => $user->id]) }}" class="btn btn-primary">View</a> |
+                    <a href="{{ route('user.updateUser', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a> |
+                    <a href="{{ route('user.deleteUser', ['id' => $user->id]) }}" class="btn btn-danger">Delete</a>
+                </th>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

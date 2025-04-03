@@ -15,6 +15,18 @@
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
+                <div class="form-group mb-4">
+                    <input type="text" placeholder="Like" id="like" class="form-control form-control-lg rounded-pill" name="like" required autofocus>
+                    @if ($errors->has('like'))
+                        <span class="text-danger">{{ $errors->first('like') }}</span>
+                    @endif
+                </div>
+                <div class="form-group mb-4">
+                    <input type="text" placeholder="Facebook" id="facebook" class="form-control form-control-lg rounded-pill" name="facebook" required autofocus>
+                    @if ($errors->has('facebook'))
+                        <span class="text-danger">{{ $errors->first('facebook') }}</span>
+                    @endif
+                </div>
 
                 <!-- Email Input -->
                 <div class="form-group mb-4">

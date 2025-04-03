@@ -13,6 +13,20 @@
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                 </div>
+                <div class="col-md-10">
+                    <label for="like" class="form-label">Like</label>
+                    <input type="text" class="form-control" value="{{$user->like}}" name="like">
+                    @if ($errors->has('like'))
+                                        <span class="text-danger">{{ $errors->first('like') }}</span>
+                                    @endif
+                </div>
+                <div class="col-md-10">
+                    <label for="facebook" class="form-label">Facebook</label>
+                    <input type="text" class="form-control" value="{{$user->facebook}}" name="facebook">
+                    @if ($errors->has('facebook'))
+                                        <span class="text-danger">{{ $errors->first('facebook') }}</span>
+                                    @endif
+                </div>
         
                 <div class="col-md-10">
                     <label for="password" class="form-label">Mật Khẩu</label>
