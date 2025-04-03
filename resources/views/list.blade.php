@@ -8,6 +8,8 @@
             <tr>
                 <th>ID</th>
                 <th>Username</th>
+                <th>Like</th>
+                <th>Facebook</th>
                 <th>Email</th>
                 <th>Thao Tác</th>
             </tr>
@@ -17,6 +19,8 @@
             <tr>
                 <th>{{ $user->id }}</th>
                 <th>{{ $user->name }}</th>
+                <th>{{ $user->like }}</th>
+                <th>{{ $user->facebook }}</th>
                 <th>{{ $user->email }}</th>
                 <th>
                     <a href="{{ route('user.viewUser', ['id' => $user->id]) }}" class="btn btn-primary">View</a> |
